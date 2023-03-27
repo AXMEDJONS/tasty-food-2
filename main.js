@@ -50,12 +50,19 @@ console.log(window_scroll_top);
 //     }
 // }
 
-window.onscroll = () => {
+window.onscroll = function () { myFunction() };
+
+function myFunction() {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrolled = (winScroll / height) * 100;
+    document.getElementById("myBar").style.width = scrolled + "%";
+
     let links = doc.querySelectorAll('.nav__link')
     for (let item of links) {
         item.classList.remove('active-link')
     }
-    if (window_scroll_top < 588 || window_scroll_top == 0) {
+    if (window_scroll_top < 588) {
         links[0].classList.add('active-link')
     }
     if (window_scroll_top > 587 && window_scroll_top < 888) {
@@ -70,15 +77,6 @@ window.onscroll = () => {
     if (window_scroll_top > 2048 && window_scroll_top < 3227) {
         links[4].classList.add('active-link')
     }
-}
-
-window.onscroll = function () { myFunction() };
-
-function myFunction() {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrolled = (winScroll / height) * 100;
-    document.getElementById("myBar").style.width = scrolled + "%";
 }
 
 let yakor__home = doc.querySelectorAll('.nav__link')[0]
