@@ -161,16 +161,17 @@ let swiper = new Swiper(".mySwiper", {
     slidesPerView: 3,
     spaceBetween: 100,
     pagination: false,
+    allowTouchMove: false,
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
     },
     keyboard: true,
     loop: true,
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false
-    },
+    // autoplay: {
+    //     delay: 2500,
+    //     disableOnInteraction: false
+    // },
     breakpoints: {
         300: {
             slidesPerView: 1,
@@ -181,11 +182,103 @@ let swiper = new Swiper(".mySwiper", {
         767: {
             slidesPerView: 3,
         },
-        992: {
-            slidesPerView: 4,
-        },
+        // 992: {
+        //     slidesPerView: 4,
+        // },
     },
 });
 
 // Задание 6 - Карта, номер телефона выполнено
 // Задание 7 - Прогресс бар находится в Задании 2
+
+let sliderSlides = doc.querySelectorAll('.swiper-slide')
+sliderSlides.forEach(element => {
+    element.addEventListener('dragstart', dragStart)
+    element.addEventListener('dragover', dragOver)
+    element.addEventListener('dragleave', dragLeave)
+    element.addEventListener('drop', Dropp)
+    element.addEventListener('dragend', dragEnd)
+});
+
+let dragElement;
+let el1;
+let el1Vnutri;
+
+function dragStart(event) {
+    dragElement = event.target;
+    dragElement.classList.add('dragging');
+
+    el1 = this
+    el1Vnutri = this.firstElementChild
+}
+function dragEnd(event) {
+    this.style.border = '1px solid transparent'
+}
+function dragOver(event) {
+    event.preventDefault();
+    this.style.border = '1px solid #02FF78'
+}
+function dragLeave(event) {
+    this.style.border = '1px solid transparent'
+}
+function Dropp() {
+    event.preventDefault();
+    this.style.border = '1px solid transparent'
+    this.append(el1Vnutri)
+    el1.append(this.firstElementChild)
+}
+
+// Выбираем кнопку
+let btn = doc.querySelector(".mode__button");
+// Отслеживаем щелчок по кнопке
+btn.addEventListener("click", function () {
+    let body = doc.body
+    // Затем переключаем (добавляем/удаляем) класс .dark-theme для body
+    let dnevnoy__css = doc.querySelector('.dnevnoy__css')
+    // setTimeout(() => {
+    // }, "100");
+    if (dnevnoy__css.href === 'http://127.0.0.1:5502/assets/css/styles.css') {
+        dnevnoy__css.href = './assets/css/style.css'
+    }
+    else if (dnevnoy__css.href === 'http://127.0.0.1:5502/assets/css/style.css') {
+        dnevnoy__css.href = './assets/css/styles.css'
+    }
+});
+
+// let drag_and_drop = () => {
+//     let zone = document.querySelectorAll('.swiper-wrapper')
+//     let children;
+//     let prevs;
+//     function dr_st() {
+//         prevs = this
+//         children = this.children
+//     }
+//     function dr_ent() { }
+//     function dr_ov(event) {
+//         event.preventDefault()
+//     }
+//     function dr_lv() { }
+//     function dr_end() { }
+//     function dr_op() {
+//         for (let item of children) {
+//             this.append(item)
+//         }
+//         let child;
+//         child = this.children
+//         for (let item2 of child) {
+//             prevs.append(item2)
+//         }
+//     }
+
+   
+//     for (let item of zone ) {
+//         item.addEventListener('dragstart', dr_st)
+//         item.addEventListener('dragenter', dr_ent)
+//         item.addEventListener('dragover', dr_ov)
+//         item.addEventListener('dragleave', dr_lv)
+//         item.addEventListener('dragend', dr_end)
+//         item.addEventListener('drop', dr_op)
+       
+//     }
+// }
+// drag_and_drop()
