@@ -1,5 +1,33 @@
 let doc = document
 
+// Выбираем кнопку
+let btn = doc.querySelector(".mode__button");
+// Отслеживаем щелчок по кнопке
+btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    let css = doc.querySelector('.css')
+    if (localStorage.getItem('theme') === 'dark') {
+        localStorage.removeItem('theme')
+    }
+    else {
+        localStorage.setItem('theme', 'dark')
+    }
+    replacement__css()
+});
+
+function replacement__css() {
+    let css = doc.querySelector('.css')
+    try {
+        if (localStorage.getItem('theme') === 'dark') {
+            css.href = './assets/css/style.css'
+        }
+        else {
+            css.href = './assets/css/styles.css'
+        }
+    } catch (error) { }
+}
+replacement__css()
+
 function showMenu(toggleId, navId) {
     const toggle = document.getElementById(toggleId);
     nav = document.getElementById(navId);
@@ -227,31 +255,3 @@ function Dropp() {
     this.append(el1Vnutri)
     el1.append(this.firstElementChild)
 }
-
-// Выбираем кнопку
-let btn = doc.querySelector(".mode__button");
-// Отслеживаем щелчок по кнопке
-btn.addEventListener("click", function (event) {
-    event.preventDefault();
-    let css = doc.querySelector('.css')
-    if (localStorage.getItem('theme') === 'dark') {
-        localStorage.removeItem('theme')
-    }
-    else {
-        localStorage.setItem('theme', 'dark')
-    }
-    replacement__css()
-});
-
-function replacement__css() {
-    let css = doc.querySelector('.css')
-    try {
-        if (localStorage.getItem('theme') === 'dark') {
-            css.href = './assets/css/style.css'
-        }
-        else {
-            css.href = './assets/css/styles.css'
-        }
-    } catch (error) { }
-}
-replacement__css()
