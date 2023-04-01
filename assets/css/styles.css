@@ -209,8 +209,8 @@ input[type="radio"] {
 }
 
 .mode__button {
-  width: 60px;
-  height: 36px;
+  width: 50px;
+  height: 30px;
   background: rgba(128, 128, 128, 0.2);
   border: 0px solid;
   border-radius: 18px;
@@ -225,8 +225,8 @@ input[type="radio"] {
 }
 
 .circle {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: white;
   position: absolute;
@@ -234,6 +234,10 @@ input[type="radio"] {
   /* right: 0; */
   left: 3px;
   transition: 300ms;
+}
+
+.sdvig {
+  left: 27px;
 }
 
 /* body.dark-theme {
@@ -278,12 +282,20 @@ html {
 } */
 
 /*========== Variables Dark theme ==========*/
-body.dark-theme {
+/* body.dark-theme {
     --title-color: #393939;
     --text-color: #707070;
     --body-color: #FBFEFD;
     --container-color: #FFFFFF;
     transition: 1s;
+} */
+
+body.dark-theme {
+  --title-color: #393939;
+  --text-color: #707070;
+  --body-color: #FBFEFD;
+  --container-color: #FFFFFF;
+  transition: 1s;
 }
 
 /* body.dark-theme {
@@ -957,6 +969,7 @@ img {
     height: 640px;
   }
 }
+
 .swiper-content {
   display: flex;
   flex-direction: column;
